@@ -9,11 +9,11 @@ set -e
 #EVALUATIONSET_NAME=python_0_0
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
-MODEL_NAME=action_vgg_l
-TRAIN_DIR=/home/cheer/Project/ActionNet/models/2s/jp
+MODEL_NAME=action_vgg_e
+TRAIN_DIR=/content/ActionNet/dataset/models
 
 # Where the dataset is saved to.
-TRAINSET_DIR=/home/cheer/Project/video_test/action_merge/jp_2s
+TRAINSET_DIR=/content/ActionNet/dataset/action_merge/jp_2s
 #EVALUATIONSET_DIR=/home/cheer/video_test/corre/data/${EVALUATIONSET_NAME}
 
 #exponential   fixed
