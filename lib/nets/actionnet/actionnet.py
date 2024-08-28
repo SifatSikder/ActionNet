@@ -2,10 +2,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
-from ..correlation import correlation
 
-slim = tf.contrib.slim
+from ..correlation import correlation
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 def action_vgg_arg_scope(weight_decay=0.0005):
   with slim.arg_scope([slim.conv2d, slim.fully_connected],

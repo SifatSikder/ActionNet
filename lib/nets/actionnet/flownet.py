@@ -2,11 +2,11 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
 from ..correlation import correlation
 
-slim = tf.contrib.slim
-
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 def block35(net, scale=1.0, activation_fn=tf.nn.relu, scope=None, reuse=None):
   """Builds the 35x35 resnet block."""
   with tf.variable_scope(scope, 'Block35', [net], reuse=reuse):

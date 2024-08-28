@@ -22,13 +22,15 @@ from __future__ import division
 from __future__ import print_function
 
 import copy
-import tensorflow as tf
+
 
 from nets.nasnet import nasnet
 from nets.nasnet import nasnet_utils
 
 arg_scope = tf.contrib.framework.arg_scope
-slim = tf.contrib.slim
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 
 def large_imagenet_config():

@@ -56,14 +56,14 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
 
 from nets import resnet_utils
 
 
 resnet_arg_scope = resnet_utils.resnet_arg_scope
-slim = tf.contrib.slim
-
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 class NoOpScope(object):
   """No-op context manager."""

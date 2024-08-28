@@ -18,14 +18,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 from lib import flow_dataset
 from lib.deployment import model_deploy
 from lib.nets import nets_factory
 from lib.preprocessing import preprocessing_factory
 
-slim = tf.contrib.slim
 
 tf.app.flags.DEFINE_string(
     'master', '', 'The address of the TensorFlow master to use.')

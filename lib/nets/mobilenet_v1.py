@@ -108,9 +108,9 @@ from __future__ import print_function
 from collections import namedtuple
 import functools
 
-import tensorflow as tf
-
-slim = tf.contrib.slim
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 # Conv and DepthSepConv namedtuple define layers of the MobileNet architecture
 # Conv defines 3x3 convolution layers

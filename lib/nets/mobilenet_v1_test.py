@@ -19,12 +19,14 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-import tensorflow as tf
+
 
 from nets import mobilenet_v1
 
-slim = tf.contrib.slim
 
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 class MobilenetV1Test(tf.test.TestCase):
 

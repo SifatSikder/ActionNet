@@ -36,9 +36,9 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
-
-slim = tf.contrib.slim
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 trunc_normal = lambda stddev: tf.truncated_normal_initializer(0.0, stddev)
 
 

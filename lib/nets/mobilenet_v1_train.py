@@ -18,13 +18,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
+
 
 from datasets import dataset_factory
 from nets import mobilenet_v1
 from preprocessing import preprocessing_factory
 
-slim = tf.contrib.slim
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 
 flags = tf.app.flags
 
