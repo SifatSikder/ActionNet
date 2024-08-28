@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<annotation>
+	<videoname>java-1</videoname>
+	<box>
+		<pos>03725</pos>
+	</box>
+	<bndbox>
+		<xmin>346</xmin>
+		<ymin>344</ymin>
+		<xmax>358</xmax>
+		<ymax>360</ymax>
+	</bndbox>
+	<bndbox>
+		<xmin>270</xmin>
+		<ymin>318</ymin>
+		<xmax>282</xmax>
+		<ymax>336</ymax>
+	</bndbox>
+	<max_box>
+		<xmin>270</xmin>
+		<ymin>318</ymin>
+		<xmax>282</xmax>
+		<ymax>336</ymax>
+	</max_box>
+	<max_region>
+		<xmin>270</xmin>
+		<ymin>318</ymin>
+		<xmax>358</xmax>
+		<ymax>360</ymax>
+	</max_region>
+</annotation>
