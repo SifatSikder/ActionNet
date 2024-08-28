@@ -5,7 +5,8 @@ from __future__ import print_function
 import os
 import sys
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 LABELS_FILENAME = 'labels.txt'
 
