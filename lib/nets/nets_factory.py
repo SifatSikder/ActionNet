@@ -37,7 +37,6 @@ networks_map = {
                 'inception_resnet_v2': inception.inception_resnet_v2,
                 'action_vgg_e':actionnet.action_vgg_e,
                 'action_vgg_l':actionnet.action_vgg_l,
-                'action_vgg_c':actionnet.action_vgg_c,
                 'action_vgg_3D':actionnet.action_vgg_3D,
                }
 
@@ -49,7 +48,6 @@ arg_scopes_map = {
                   'inception_resnet_v2': inception.inception_resnet_v2_arg_scope,
                   'action_vgg_e':actionnet.action_vgg_arg_scope,
                   'action_vgg_l':actionnet.action_vgg_arg_scope,
-                  'action_vgg_c':actionnet.action_vgg_arg_scope,
                   'action_vgg_3D':actionnet.action_vgg_arg_scope,
                  }
 
