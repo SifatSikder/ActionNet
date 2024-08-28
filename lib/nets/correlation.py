@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 _correlation_ops = tf.load_op_library(
     tf.resource_loader.get_path_to_datafile("./ops/build/correlation.so"))
