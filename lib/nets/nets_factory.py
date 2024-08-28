@@ -19,7 +19,9 @@ from __future__ import division
 from __future__ import print_function
 import functools
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import tf_slim as slim
 import sys
 sys.path.append('lib/')
 
@@ -37,7 +39,6 @@ from nets.nasnet import nasnet
 from nets.nasnet import pnasnet
 from nets.actionnet import flownet, actionnet
 
-slim = tf.contrib.slim
 
 networks_map = {'alexnet_v2': alexnet.alexnet_v2,
                 'cifarnet': cifarnet.cifarnet,
