@@ -3,7 +3,7 @@ from __future__ import division
 from __future__ import print_function
 
 
-from ..correlation import correlation
+# from ..correlation import correlation
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 import tf_slim as slim
@@ -172,65 +172,65 @@ def action_vgg_l(input_a,
       return net, end_points
 action_vgg_l.default_image_size = 224
 
-def action_vgg_c(input_a,
-           input_b, 
-           input_mode,
-           output_mode,
-           num_classes=19, 
-           is_training=True, 
-           dropout_keep_prob=0.5,
-           spatial_squeeze=True,
-           scope='action_vgg_c',
-           fc_conv_padding='VALID',
-           global_pool=False,
-           reuse=tf.AUTO_REUSE):
+# def action_vgg_c(input_a,
+#            input_b, 
+#            input_mode,
+#            output_mode,
+#            num_classes=19, 
+#            is_training=True, 
+#            dropout_keep_prob=0.5,
+#            spatial_squeeze=True,
+#            scope='action_vgg_c',
+#            fc_conv_padding='VALID',
+#            global_pool=False,
+#            reuse=tf.AUTO_REUSE):
 
-  with tf.variable_scope(scope, 'action_vgg_c', [input_a, input_b], reuse=reuse) as sc:
-    end_points_collection = sc.original_name_scope + '_end_points'
-    # Collect outputs for conv2d, fully_connected and max_pool2d.
-    with slim.arg_scope([slim.fully_connected, slim.max_pool2d],
-                        outputs_collections=end_points_collection):
+#   with tf.variable_scope(scope, 'action_vgg_c', [input_a, input_b], reuse=reuse) as sc:
+#     end_points_collection = sc.original_name_scope + '_end_points'
+#     # Collect outputs for conv2d, fully_connected and max_pool2d.
+#     with slim.arg_scope([slim.fully_connected, slim.max_pool2d],
+#                         outputs_collections=end_points_collection):
 
-      conv_a = slim.repeat(input_a, 3, slim.conv2d, 64, [3,3], scope = 'conv_a')
-      conv_b = slim.repeat(input_b, 3, slim.conv2d, 64, [3,3], scope = 'conv_b')
-      cc = correlation(conv_a, conv_b, 1, 20, 1, 2, 20)
-      conv_a_4 = slim.conv2d(conv_a, 32, 1, scope='conv_redir')
-      inputs = tf.concat([conv_a_4, cc], axis=3)
-      net = action_vgg_base(inputs, reuse, scope = sc)
+#       conv_a = slim.repeat(input_a, 3, slim.conv2d, 64, [3,3], scope = 'conv_a')
+#       conv_b = slim.repeat(input_b, 3, slim.conv2d, 64, [3,3], scope = 'conv_b')
+#       cc = correlation(conv_a, conv_b, 1, 20, 1, 2, 20)
+#       conv_a_4 = slim.conv2d(conv_a, 32, 1, scope='conv_redir')
+#       inputs = tf.concat([conv_a_4, cc], axis=3)
+#       net = action_vgg_base(inputs, reuse, scope = sc)
 
-      # Use conv2d instead of fully_connected layers.
-      net = slim.conv2d(net, 4096, [7, 7], padding=fc_conv_padding, scope='fc6')
-      net = slim.dropout(net, dropout_keep_prob, is_training=is_training,
-                         scope='dropout6')
+#       # Use conv2d instead of fully_connected layers.
+#       net = slim.conv2d(net, 4096, [7, 7], padding=fc_conv_padding, scope='fc6')
+#       net = slim.dropout(net, dropout_keep_prob, is_training=is_training,
+#                          scope='dropout6')
 
-      if output_mode == 0 or output_mode == 2:
-        net = slim.conv2d(net, 4096, [1, 1], scope='fc7')
-      # Convert end_points_collection into a end_point dict.
-        end_points = slim.utils.convert_collection_to_dict(end_points_collection)
-        if global_pool:
-          net = tf.reduce_mean(net, [1, 2], keep_dims=True, name='global_pool')
-          end_points['global_pool'] = net
+#       if output_mode == 0 or output_mode == 2:
+#         net = slim.conv2d(net, 4096, [1, 1], scope='fc7')
+#       # Convert end_points_collection into a end_point dict.
+#         end_points = slim.utils.convert_collection_to_dict(end_points_collection)
+#         if global_pool:
+#           net = tf.reduce_mean(net, [1, 2], keep_dims=True, name='global_pool')
+#           end_points['global_pool'] = net
 
-        net = slim.dropout(net, dropout_keep_prob, is_training=is_training,
-                         scope='dropout7')
-      elif output_mode == 1:
-        end_points = slim.utils.convert_collection_to_dict(end_points_collection)
-        if global_pool:
-          net = tf.reduce_mean(net, [1, 2], keep_dims=True, name='global_pool')
-          end_points['global_pool'] = net
-        net = lstm_a(tf.transpose(tf.squeeze(net, 1), [1,0,2]), scope=sc)
-        net = tf.transpose(net, [1,0,2])
-        net = tf.expand_dims(net, 1)
+#         net = slim.dropout(net, dropout_keep_prob, is_training=is_training,
+#                          scope='dropout7')
+#       elif output_mode == 1:
+#         end_points = slim.utils.convert_collection_to_dict(end_points_collection)
+#         if global_pool:
+#           net = tf.reduce_mean(net, [1, 2], keep_dims=True, name='global_pool')
+#           end_points['global_pool'] = net
+#         net = lstm_a(tf.transpose(tf.squeeze(net, 1), [1,0,2]), scope=sc)
+#         net = tf.transpose(net, [1,0,2])
+#         net = tf.expand_dims(net, 1)
       
-      net = slim.conv2d(net, num_classes, [1, 1],
-                        activation_fn=None,
-                        normalizer_fn=None,
-                        scope='fc8')
-      if spatial_squeeze:
-        net = tf.squeeze(net, [1, 2], name='fc8/squeezed')
-      end_points[sc.name + '/fc8'] = net
-      return net, end_points
-action_vgg_c.default_image_size = 224
+#       net = slim.conv2d(net, num_classes, [1, 1],
+#                         activation_fn=None,
+#                         normalizer_fn=None,
+#                         scope='fc8')
+#       if spatial_squeeze:
+#         net = tf.squeeze(net, [1, 2], name='fc8/squeezed')
+#       end_points[sc.name + '/fc8'] = net
+#       return net, end_points
+# action_vgg_c.default_image_size = 224
 
 def action_vgg_3D(input_a,
            input_b, 
