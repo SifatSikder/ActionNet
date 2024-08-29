@@ -390,6 +390,8 @@ def main(_):
       label -= FLAGS.labels_offset
 
       train_image_size = FLAGS.train_image_size or network_fn.default_image_size
+      image_a = tf.image.resize_images(image_a, [train_image_size, train_image_size])
+      image_b = tf.image.resize_images(image_b, [train_image_size, train_image_size])
 
       image_a = image_preprocessing_fn(image_a, train_image_size, train_image_size)
       image_b = image_preprocessing_fn(image_b, train_image_size, train_image_size)
