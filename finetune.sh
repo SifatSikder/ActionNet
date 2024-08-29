@@ -10,7 +10,7 @@ set -e
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
 MODEL_NAME=action_vgg_e
-TRAIN_DIR=/content/ActionNet/dataset/models
+TRAIN_DIR=/content/drive/MyDrive/IIT
 
 # Where the dataset is saved to.
 TRAINSET_DIR=/content/ActionNet/dataset/action_merge/jp_2s
