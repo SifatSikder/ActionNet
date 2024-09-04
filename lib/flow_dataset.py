@@ -14,12 +14,12 @@ _FILE_PATTERN = 'clip_%s_*.tfrecord'
 
 SPLITS_TO_SIZES = {'train': 3500, 'validation': 500}
 
-_NUM_CLASSES = 19
+_NUM_CLASSES = 8
 
 _ITEMS_TO_DESCRIPTIONS = {
     'image_a': 'A color image of varying size.',
     'image_b': 'A color image of varying size.',
-    'label': 'A single integer between 0 and 5',
+    'label': 'A single integer between 0 and 8',
 }
 
 
@@ -54,7 +54,7 @@ def get_split(split_name, dataset_dir, file_pattern=None, reader=None):
   keys_to_features = {
       'image/encoded_a': tf.FixedLenFeature((), tf.string, default_value=''),
       'image/encoded_b': tf.FixedLenFeature((), tf.string, default_value=''),
-      'image/format': tf.FixedLenFeature((), tf.string, default_value='png'),
+      'image/format': tf.FixedLenFeature((), tf.string, default_value='jpg'),
       'image/class/label': tf.FixedLenFeature(
           [], tf.int64, default_value=tf.zeros([], dtype=tf.int64)),
   }
