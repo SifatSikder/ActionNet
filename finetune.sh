@@ -10,10 +10,12 @@ set -e
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
 MODEL_NAME=action_vgg_e
-TRAIN_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
+# TRAIN_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
+TRAIN_DIR=/kaggle/input/100-actionnet-data/jp_2s
 
 # Where the dataset is saved to.
-TRAINSET_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
+# TRAINSET_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
+TRAINSET_DIR=/kaggle/input/100-actionnet-data/jp_2s
 #EVALUATIONSET_DIR=/home/cheer/video_test/corre/data/${EVALUATIONSET_NAME}
 
 #exponential   fixed
@@ -27,8 +29,8 @@ python3 train_image_classifier.py \
   --batch_size=8 \
   --learning_rate=0.01 \
   --learning_rate_decay_type=fixed \
-  --save_interval_secs=600 \
-  --save_summaries_secs=300 \
+  --save_interval_secs=3600 \
+  --save_summaries_secs=3600 \
   --log_every_n_steps=10 \
   --optimizer=adam \
   --weight_decay=0.00004 \
