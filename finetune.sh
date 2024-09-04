@@ -10,10 +10,10 @@ set -e
 
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
 MODEL_NAME=action_vgg_e
-TRAIN_DIR=/content/drive/MyDrive/IIT
+TRAIN_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
 
 # Where the dataset is saved to.
-TRAINSET_DIR=/content/ActionNet/dataset/action_merge/jp_2s
+TRAINSET_DIR=/content/drive/MyDrive/IIT/4-2/SPL-3/Model
 #EVALUATIONSET_DIR=/home/cheer/video_test/corre/data/${EVALUATIONSET_NAME}
 
 #exponential   fixed
